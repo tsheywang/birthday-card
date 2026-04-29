@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+  background-size: 400% 400%;
+  animation: bgMove 8s ease infinite;
+  font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
+  overflow: hidden;
+}
+
+/* background animation */
+@keyframes bgMove {
+  0% {background-position:0% 50%}
+  50% {background-position:100% 50%}
+  100% {background-position:0% 50%}
+}
+
+/* floating hearts */
+.heart {
+  position: absolute;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes float {
+  0% {transform: translateY(100vh) scale(0.5); opacity:0;}
+  50% {opacity:1;}
+  100% {transform: translateY(-10vh) scale(1.2); opacity:0;}
+}
+
+/* center content */
+.container {
+  text-align: center;
+  color: white;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 2s ease forwards;
+  animation-delay: 1.5s;
+}
+
+@keyframes fadeIn {
+  to {opacity:1; transform: translateY(0);}
+}
+
+h1 {
+  font-size: 1.8rem;
+  color: black;
+  margin-bottom: 20px;
+  text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* button */
+button {
+  padding: 18px 40px;
+  font-size: 1.25rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: none;
+  border-radius: 50px;
+  background: #ff2e63;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  transition: 0.3s;
+  opacity: 0;
+  animation: showBtn 2s ease forwards;
+  animation-delay: 2.5s;
+}
+
+@keyframes showBtn {
+  to {opacity:1;}
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+/* fade out transition */
+.fade-out {
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+  to {opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>I made something for you bb❤️</h1>
+  <button onclick="enter()">Tap Me</button>
+</div>
+
+<script>
+// floating hearts generator
+for (let i = 0; i < 12; i++) {
+  let h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "❤️";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.animationDuration = (3 + Math.random() * 4) + "s";
+  document.body.appendChild(h);
+}
+
+// transition
+function enter() {
+  document.body.classList.add("fade-out");
+  setTimeout(() => {
+    window.location.href = "birthday.html";
+  }, 900);
+}
+</script>
+
+</body>
+</html>
